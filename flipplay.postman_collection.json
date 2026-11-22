@@ -1,0 +1,298 @@
+{
+	"info": {
+		"_postman_id": "flipplay-modul4-rest-api",
+		"name": "FlipPlay REST API - Modul 4",
+		"description": "Koleksi Postman lengkap untuk Demo Modul 4 (Happy Path & Failure Path)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Happy Path - Media CRUD",
+			"item": [
+				{
+					"name": "GET All Media (Pagination)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{ "key": "Accept", "value": "application/json" }
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/media",
+							"protocol": "http",
+							"host": ["127", "0", "0", "1"],
+							"port": "8000",
+							"path": ["api", "media"]
+						}
+					}
+				},
+				{
+					"name": "GET Search Media by Title (?search=Grand)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{ "key": "Accept", "value": "application/json" }
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/media?search=Grand",
+							"protocol": "http",
+							"host": ["127", "0", "0", "1"],
+							"port": "8000",
+							"path": ["api", "media"],
+							"query": [
+								{ "key": "search", "value": "Grand" }
+							]
+						}
+					}
+				},
+				{
+					"name": "GET Detail 1 Media + Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{ "key": "Accept", "value": "application/json" }
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/media/1",
+							"protocol": "http",
+							"host": ["127", "0", "0", "1"],
+							"port": "8000",
+							"path": ["api", "media", "1"]
+						}
+					}
+				},
+				{
+					"name": "POST Create New Media (201 Created)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Accept", "value": "application/json" },
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Solo Leveling\",\n  \"type\": \"Anime\",\n  \"genre\": \"Action / Fantasy\",\n  \"rating\": 8.7,\n  \"release_year\": 2024,\n  \"total_count\": 12,\n  \"creator\": \"A-1 Pictures\"\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/media",
+							"protocol": "http",
+							"host": ["127", "0", "0", "1"],
+							"port": "8000",
+							"path": ["api", "media"]
+						}
+					}
+				},
+				{
+					"name": "PATCH Update Media (200 OK)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{ "key": "Accept", "value": "application/json" },
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"rating\": 9.1\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/media/6",
+							"protocol": "http",
+							"host": ["127", "0", "0", "1"],
+							"port": "8000",
+							"path": ["api", "media", "6"]
+						}
+					}
+				},
+				{
+					"name": "DELETE Media (200 OK)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{ "key": "Accept", "value": "application/json" }
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/media/6",
+							"protocol": "http",
+							"host": ["127", "0", "0", "1"],
+							"port": "8000",
+							"path": ["api", "media", "6"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "2. Happy Path - User & Collection (Custom Action)",
+			"item": [
+				{
+					"name": "GET All Users + Media",
+					"request": {
+						"method": "GET",
+						"header": [
+							{ "key": "Accept", "value": "application/json" }
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/users",
+							"protocol": "http",
+							"host": ["127", "0", "0", "1"],
+							"port": "8000",
+							"path": ["api", "users"]
+						}
+					}
+				},
+				{
+					"name": "GET Detail User + Collection",
+					"request": {
+						"method": "GET",
+						"header": [
+							{ "key": "Accept", "value": "application/json" }
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/users/1",
+							"protocol": "http",
+							"host": ["127", "0", "0", "1"],
+							"port": "8000",
+							"path": ["api", "users", "1"]
+						}
+					}
+				},
+				{
+					"name": "GET User Collection Only",
+					"request": {
+						"method": "GET",
+						"header": [
+							{ "key": "Accept", "value": "application/json" }
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/users/1/collection",
+							"protocol": "http",
+							"host": ["127", "0", "0", "1"],
+							"port": "8000",
+							"path": ["api", "users", "1", "collection"]
+						}
+					}
+				},
+				{
+					"name": "POST Attach Media to User Collection",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Accept", "value": "application/json" },
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"media_id\": 3\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/users/1/collection",
+							"protocol": "http",
+							"host": ["127", "0", "0", "1"],
+							"port": "8000",
+							"path": ["api", "users", "1", "collection"]
+						}
+					}
+				},
+				{
+					"name": "DELETE Detach Media from User Collection",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{ "key": "Accept", "value": "application/json" }
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/users/1/collection/3",
+							"protocol": "http",
+							"host": ["127", "0", "0", "1"],
+							"port": "8000",
+							"path": ["api", "users", "1", "collection", "3"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "3. Failure Path - Error Handling Tests",
+			"item": [
+				{
+					"name": "POST Empty Title (422 Validation Error)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Accept", "value": "application/json" },
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"\",\n  \"type\": \"Novel\",\n  \"genre\": \"\",\n  \"rating\": 15\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/media",
+							"protocol": "http",
+							"host": ["127", "0", "0", "1"],
+							"port": "8000",
+							"path": ["api", "media"]
+						}
+					}
+				},
+				{
+					"name": "POST Duplicate Media Title (422 Validation Error)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Accept", "value": "application/json" },
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Grand Blue Dreaming\",\n  \"type\": \"Anime\",\n  \"genre\": \"Comedy / Slice of Life\",\n  \"rating\": 8.4,\n  \"release_year\": 2018,\n  \"total_count\": 12,\n  \"creator\": \"Zero-G\"\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/media",
+							"protocol": "http",
+							"host": ["127", "0", "0", "1"],
+							"port": "8000",
+							"path": ["api", "media"]
+						}
+					}
+				},
+				{
+					"name": "POST Duplicate Collection Attach (409 Conflict)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Accept", "value": "application/json" },
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"media_id\": 1\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/users/1/collection",
+							"protocol": "http",
+							"host": ["127", "0", "0", "1"],
+							"port": "8000",
+							"path": ["api", "users", "1", "collection"]
+						}
+					}
+				},
+				{
+					"name": "GET Non-existent Media ID (404 Not Found)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{ "key": "Accept", "value": "application/json" }
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/media/999",
+							"protocol": "http",
+							"host": ["127", "0", "0", "1"],
+							"port": "8000",
+							"path": ["api", "media", "999"]
+						}
+					}
+				}
+			]
+		}
+	]
+}
