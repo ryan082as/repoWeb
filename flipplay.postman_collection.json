@@ -1,16 +1,16 @@
 {
 	"info": {
 		"_postman_id": "flipplay-modul4-rest-api",
-		"name": "FlipPlay REST API - Modul 4",
-		"description": "Koleksi Postman lengkap untuk Demo Modul 4 (Happy Path & Failure Path)",
+		"name": "FlipPlay API",
+		"description": "Koleksi Postman REST API FlipPlay",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "1. Happy Path - Media CRUD",
+			"name": "Media",
 			"item": [
 				{
-					"name": "GET All Media (Pagination)",
+					"name": "Get All Media",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -26,7 +26,7 @@
 					}
 				},
 				{
-					"name": "GET Search Media by Title (?search=Grand)",
+					"name": "Search Media",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -45,7 +45,7 @@
 					}
 				},
 				{
-					"name": "GET Detail 1 Media + Users",
+					"name": "Get Media Detail",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -61,7 +61,7 @@
 					}
 				},
 				{
-					"name": "POST Create New Media (201 Created)",
+					"name": "Create Media",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -82,7 +82,7 @@
 					}
 				},
 				{
-					"name": "PATCH Update Media (200 OK)",
+					"name": "Update Media",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -103,7 +103,7 @@
 					}
 				},
 				{
-					"name": "DELETE Media (200 OK)",
+					"name": "Delete Media",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -121,10 +121,10 @@
 			]
 		},
 		{
-			"name": "2. Happy Path - User & Collection (Custom Action)",
+			"name": "User & Collection",
 			"item": [
 				{
-					"name": "GET All Users + Media",
+					"name": "Get All Users",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -140,7 +140,7 @@
 					}
 				},
 				{
-					"name": "GET Detail User + Collection",
+					"name": "Get User Detail",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -156,7 +156,7 @@
 					}
 				},
 				{
-					"name": "GET User Collection Only",
+					"name": "Get User Collection",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -172,7 +172,7 @@
 					}
 				},
 				{
-					"name": "POST Attach Media to User Collection",
+					"name": "Add to Collection",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -193,7 +193,7 @@
 					}
 				},
 				{
-					"name": "DELETE Detach Media from User Collection",
+					"name": "Remove from Collection",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -211,10 +211,10 @@
 			]
 		},
 		{
-			"name": "3. Failure Path - Error Handling Tests",
+			"name": "Error Tests",
 			"item": [
 				{
-					"name": "POST Empty Title (422 Validation Error)",
+					"name": "Create Media - Input Kosong",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -235,7 +235,7 @@
 					}
 				},
 				{
-					"name": "POST Duplicate Media Title (422 Validation Error)",
+					"name": "Create Media - Judul Duplikat",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -256,7 +256,7 @@
 					}
 				},
 				{
-					"name": "POST Duplicate Collection Attach (409 Conflict)",
+					"name": "Add Collection - Duplikat",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -277,7 +277,7 @@
 					}
 				},
 				{
-					"name": "GET Non-existent Media ID (404 Not Found)",
+					"name": "Get Media - Tidak Ditemukan",
 					"request": {
 						"method": "GET",
 						"header": [
